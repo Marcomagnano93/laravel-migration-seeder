@@ -16,6 +16,13 @@ return new class extends Migration
             $table->timestamps();
             $table->string('company', 100);
             $table->string('departure', 150);
+            $table->string('destination', 150);
+            $table->dateTime('departure_time', $precision = 0);
+            $table->dateTime('arrival_time', $precision = 0);
+            $table->integer('train_code');
+            $table->tinyInteger('train_carriages');
+            $table->tinyInteger('in_time');
+            $table->tinyInteger('canceled');
         });
     }
 
