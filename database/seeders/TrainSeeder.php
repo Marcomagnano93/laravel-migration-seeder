@@ -32,7 +32,13 @@ class TrainSeeder extends Seeder
             $new_train->train_code = $faker->unique()->bothify('??-#######');
             $new_train->train_carriages = $faker->numberBetween(4, 12);
             $new_train->in_time = $faker->boolean();
-            $new_train->canceled = $faker->boolean();
+            if ($new_train->in_time === true){
+                $new_train->canceled = false;
+            }
+            else {
+                $new_train->canceled = $faker->boolean();
+            }
+            
 
             $new_train->save();
         }
