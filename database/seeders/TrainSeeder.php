@@ -17,7 +17,7 @@ class TrainSeeder extends Seeder
         
         $companyes = ['Trenitalia', 'Italo', 'Frecciarossa', 'OuiGo', 'SNCF'];
 
-        for ($i = 0; $i < 50; $i++){
+        for ($i = 0; $i < 100; $i++){
 
             
             $new_train = new Train();
@@ -28,7 +28,7 @@ class TrainSeeder extends Seeder
             $new_train->departure = $faker->city();
             $new_train->destination = $faker->city();
             $new_train->departure_time = $faker->dateTimeBetween('-1 day', '+1 week');
-            $new_train->arrival_time = $faker->dateTimeBetween('-1 day', '+1 week');
+            $new_train->arrival_time = $faker->dateTimeInInterval($new_train->departure_time, '+1 day');
             $new_train->train_code = $faker->unique()->bothify('??-#######');
             $new_train->train_carriages = $faker->numberBetween(4, 12);
             $new_train->in_time = $faker->boolean();
