@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('destination', 150);
             $table->dateTime('departure_time', $precision = 0);
             $table->dateTime('arrival_time', $precision = 0);
-            $table->integer('train_code');
+            $table->string('train_code', 10);
             $table->tinyInteger('train_carriages');
-            $table->tinyInteger('in_time');
-            $table->tinyInteger('canceled');
+            $table->boolean('in_time');
+            $table->boolean('canceled');
         });
     }
 

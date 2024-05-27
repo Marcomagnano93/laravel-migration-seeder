@@ -10,9 +10,10 @@ class PageController extends Controller
 {
     public function index() {
 
-        // $today = Carbon::now(); usa today per ottenere la Date del giorno corrente
+        $today = Carbon::now(); 
         
-        $trains = Train::whereDate('departure_time', '=', '2024-05-24')->get();
+        
+        $trains = Train::whereDate('departure_time', '=', $today)->get();
         return view ('home', compact('trains'));
     }
 }
