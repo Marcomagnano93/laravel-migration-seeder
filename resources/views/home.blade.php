@@ -17,7 +17,7 @@
                 <th scope="col">Orario di Partenza</th>
                 <th scope="col">Orario di Arrivo</th>
                 <th scope="col">N Carrozze</th>
-                <th scope="col">In orario</th>
+                <th scope="col">Note</th>
                 <th scope="col">Cancellato</th>
                 </tr>
             </thead>
@@ -30,10 +30,13 @@
                 <td>{{ $train->destination }}</td>
                 <td>{{ $train->departure_time }}</td>
                 <td>{{ $train->arrival_time }}</td>
-                <td>{{ $train->train_carriages }}</td>
+                <td>{{ $train->train_carriages }}</td>     
                 <td>
+                    @if ($train->in_time === 0 && $train->canceled === 0)<span class="blue">RITARDO</span>
+                    @elseif ($train->in_time === 0 && $train->canceled === 1)
+                    @else <span>In orario</span>@endif
                 </td>
-                <td></td>
+                <td>@if ($train->canceled === 1)<span class="red">CANCELLATO</span>@endif</td>
                 </tr>
             @endforeach   
             </tbody>
